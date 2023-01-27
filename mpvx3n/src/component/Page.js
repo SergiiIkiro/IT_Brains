@@ -6,8 +6,12 @@ export default function Page({ children }) {
 
 const PageTag = styled.div`
   /* робимо фон градієнтом */
-  background: linear-gradient(62.93deg, green 19.68%, #9a8290 89.55%);
-
+  background: linear-gradient(
+    90deg,
+    rgba(2, 175, 63, 1) 0%,
+    rgba(30, 121, 9, 0.8687850140056023) 50%,
+    rgba(241, 255, 0, 1) 100%
+  );
   /* робимо фон на всю ширину */
   width: 100%;
 `;

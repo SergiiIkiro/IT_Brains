@@ -12,7 +12,10 @@ import Payment from "./component/Payment";
 
 const START_BALANCE = 10000;
 const LIMIT_BALANCE = 100000;
-const GET_MONEY = 100;
+const GET_MONEY = -100;
+
+const SALARY_AMOUNT = 1000;
+const COURSE_PRICE = 850;
 
 export default function App() {
   // ФУНКЦІОНАЛ БАЛАНСУ ========================
@@ -40,6 +43,34 @@ export default function App() {
     // Сюди записуються змінні при оновленні яких буде виконуватися функція
   }, [balance]);
 
+  // ФУНКЦІОНАЛ Tранзакцій ========================================
+
+  const [payment, setPayment] = React.useState([]);
+  const getSalary = () => {
+    setBalance(balance + SALARY_AMOUNT);
+
+    setPayment([
+      {
+        name: "Receive Salary",
+        amount: SALARY_AMOUNT,
+        type: "+"
+      },
+      ...payment
+    ]);
+  };
+
+  const buyCourse = () => {
+    setBalance(balance - COURSE_PRICE);
+    setPayment([
+      {
+        name: "Buy Crosscourse",
+        amount: COURSE_PRICE,
+        type: "-"
+      },
+      ...payment
+    ]);
+  };
+
   // ВЕРСТКА ІНТЕРФЕЙСУ ==========================================
 
   // ця функція відкриває вікно в браузері з текстом
@@ -63,8 +94,18 @@ export default function App() {
         // ось сюди ми передаємо конфігурацію кнопок
         config={[
           {
-            name: "Отримати гроші",
+            name: "Buy Crosscourse",
+            onClick: buyCourse,
+            img: "/icon/another.svg"
+          },
+          {
+            name: "Withdraw Funds",
             onClick: getMoney,
+            img: "/icon/fish.svg"
+          },
+          {
+            name: "Receive Salary",
+            onClick: getSalary,
             img: "/icon/payment.svg"
           }
         ]}
@@ -72,7 +113,7 @@ export default function App() {
       {/* компонент списка наших транзакцій
           цей функціонал ми будемо робити на 3 уроці
       */}
-      <Payment payment={[]} />
+      <Payment payment={payment} />
     </Page>
   );
 }

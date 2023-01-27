@@ -6,18 +6,18 @@ export default function Header({ name, onClick }) {
 
 const HeaderTag = styled.div`
   /* робимо темний колір фону блока */
-  background: #1e1e1e;
+  background: #005555;
 
   /* робимо щоб знизу блок мав закруглення */
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 
   /* режим верстки flex, робимо текст по центру */
   display: flex;
   justify-content: center;
 
   /* ставимо колір тексту білим */
-  color: #fff;
+  color: #fff600;
 
   /* робимо відступи вертикальні та горизонтальні,
     щоб текст не притискався до країв блоку
